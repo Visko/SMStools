@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "smstring.h"
 
 namespace Ui {
     class MainWindow;
@@ -17,6 +18,15 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    SMString myString();
+    void updateTexts();
+
+private slots:
+    void on_bit7TextEdit_textChanged();
+    void on_textEdit_textChanged();
+    void on_ASCIItextEdit_textChanged();
+    void on_UCStextEdit_textChanged();
+    void on_UTF8textEdit_textChanged();
 };
 
 #endif // MAINWINDOW_H
