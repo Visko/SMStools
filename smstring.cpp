@@ -3,7 +3,7 @@
 #include <cstdlib>
 
 SMString::SMString() {
-    std::cout << "SMString initialized" << endl;
+    std::cout << "SMString initialized" << std::endl;
     myString = NULL;
 }
 

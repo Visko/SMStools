@@ -18,8 +18,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    SMString myString();
+    SMString myString;
     void updateTexts();
+    bool updateAllowed;
 
 private slots:
     void on_bit7TextEdit_textChanged();
