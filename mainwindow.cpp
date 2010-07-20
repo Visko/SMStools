@@ -27,51 +27,44 @@ void MainWindow::on_textEdit_textChanged()
 {
     QString text = ui->textEdit->toPlainText();
     myString.fromQString( text );
-    if (updateAllowed) {
-        updateTexts();
-    }
+    updateTexts();
 }
 
 void MainWindow::on_ASCIItextEdit_textChanged()
 {
-    if (updateAllowed) {
         updateTexts();
-    }
 }
 
 void MainWindow::on_UCStextEdit_textChanged()
 {
-    if (updateAllowed) {
         updateTexts();
-    }
 }
 
 void MainWindow::on_UTF8textEdit_textChanged()
 {
-    if (updateAllowed) {
         updateTexts();
-    }
 }
 
 void MainWindow::updateTexts() {
-    //updateAllowed = false;
     QObject *sender_obj = QObject::sender();
     QTextEdit *sender = dynamic_cast<QTextEdit*>(sender_obj);
     //QTextCursor cursor = sender->textCursor();
     int oldPos(sender->textCursor().selectionStart());
 
-    //ui->bit7TextEdit->setPlainText( myString.toBit7() );
 
+    ui->bit7TextEdit->blockSignals(true);
     ui->ASCIItextEdit->blockSignals(true);
     ui->UCStextEdit->blockSignals(true);
     ui->UTF8textEdit->blockSignals(true);
     ui->textEdit->blockSignals(true);
 
-    ui->ASCIItextEdit->setPlainText( myString.toASCII() );
-    ui->UCStextEdit->setPlainText( myString.toUCS() );
-    ui->UTF8textEdit->setPlainText( myString.toUTF8() );
-    ui->textEdit->setPlainText( myString.toQString() );
+    ui->bit7TextEdit->setPlainText(  myString.toBit7() );
+    //ui->ASCIItextEdit->setPlainText( myString.toASCII() );
+    //ui->UCStextEdit->setPlainText(   myString.toUCS() );
+    //hui->UTF8textEdit->setPlainText(  myString.toUTF8() );
+    ui->textEdit->setPlainText(      myString.toQString() );
 
+    ui->bit7TextEdit->blockSignals(false);
     ui->ASCIItextEdit->blockSignals(false);
     ui->UCStextEdit->blockSignals(false);
     ui->UTF8textEdit->blockSignals(false);

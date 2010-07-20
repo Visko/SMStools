@@ -9,12 +9,13 @@ SMString::SMString() {
 
 QString SMString::toBit7() {
     int bit7_arr_size = 0;
-    bit7_arr_size = ((myString->size()+1) * 7) / 8;
+    bit7_arr_size = ((myString->size()+1) * 7) / 8 * 7;
     char* text = new char[bit7_arr_size];
     convert_8_to_7_bit((byte*)text,
                        (byte*)myString->toAscii().data(),
                        bit7_arr_size);
-    QString *return_value = new QString(text);
+    QByteArray bit7ba(text);
+    QString *return_value = new QString( bit7ba.toHex() );
     return *return_value;
 }
 
